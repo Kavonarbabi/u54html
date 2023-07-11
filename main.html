@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Include the PrismJS library -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/themes/prism.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.min.js"></script>
+  </head>
+  <body>
+    <!-- Create a container for the Gist -->
+    <div id="gist-container"></div>
+
+    <script>
+      // Fetch the Gist content
+      fetch('https://gist.githubusercontent.com/Kavonarbabi/2e4ff525fcdc587ce90a48ede9616593/raw')
+        .then((response) => response.text())
+        .then((data) => {
+          // Create a new pre element to hold the code
+          const preElement = document.createElement('pre');
+
+          // Set the code content and language
+          preElement.innerHTML = `<code class="language-javascript">${data}</code>`;
+
+          // Append the pre element to the container
+          document.getElementById('gist-container').appendChild(preElement);
+
+          // Apply PrismJS syntax highlighting
+          Prism.highlightAll();
+        });
+    </script>
+  </body>
+</html>
